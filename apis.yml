@@ -1,0 +1,83 @@
+---
+aid: monash
+name: Monash University
+description: >-
+  Monash University is a public research university based in Melbourne,
+  Australia, and a member of the Group of Eight. It ranked #42 in the QS World
+  University Rankings 2025. Its public, machine-readable developer footprint is
+  modest and largely indirect: research data is published through monash.figshare
+  on the figshare platform (which exposes a versioned REST API and an OAI-PMH
+  endpoint), and Monash eResearch operates a Cloud Resource Allocation and
+  Management System (CRAMS) API portal. Monash maintains a GitHub organization
+  (currently with no public repositories) alongside team and student-innovation
+  orgs. No central, openly documented institutional developer portal for course,
+  catalog, timetable, or SIS APIs was found to be publicly available.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/monash/refs/heads/main/apis.yml
+tags:
+  - Education
+  - Higher Education
+  - University
+  - Research
+  - Open Data
+  - Australia
+created: '2026-06-03'
+modified: '2026-06-03'
+specificationVersion: '0.19'
+apis:
+  - aid: monash:figshare
+    name: Monash University Research Repository (monash.figshare)
+    description: >-
+      The Monash University research data repository runs on the figshare
+      platform at monash.figshare.com. Research outputs are accessible
+      programmatically through the public figshare v2 REST API and via the
+      figshare OAI-PMH endpoint for metadata harvesting. DOIs and ORCID are
+      supported for persistent identification.
+    humanURL: https://monash.figshare.com/
+    baseURL: https://api.figshare.com/v2
+    tags: [ Research Data, Repository, OAI-PMH, Open Data, figshare ]
+    properties:
+      - type: Documentation
+        url: https://docs.figshare.com/
+      - type: Website
+        url: https://monash.figshare.com/
+      - type: OAI-PMH
+        url: https://api.figshare.com/v2/oai
+  - aid: monash:crams
+    name: CRAMS API (Cloud Resource Allocation and Management System)
+    description: >-
+      Monash eResearch operates the Cloud Resource Allocation and Management
+      System (CRAMS), which exposes an API portal used to manage research cloud
+      resource allocations. Access is institutional/gated; no open public
+      specification was located.
+    humanURL: https://crams-api.erc.monash.edu/
+    baseURL: https://crams-api.erc.monash.edu/
+    tags: [ eResearch, Cloud, Research Infrastructure ]
+    properties:
+      - type: Documentation
+        url: https://crams-api.erc.monash.edu/
+common:
+  - type: Website
+    url: https://www.monash.edu/
+  - type: Research
+    url: https://research.monash.edu/
+  - type: GitHub
+    url: https://github.com/monash-university
+  - type: SourceCode
+    url: https://github.com/MonashStudentInnovation
+  - type: LinkedIn
+    url: https://www.linkedin.com/school/monash-university/
+  - type: Plans
+    url: plans/monash-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/monash-rate-limits.yml
+  - type: FinOps
+    url: finops/monash-finops.yml
+  - type: Review
+    url: review.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
