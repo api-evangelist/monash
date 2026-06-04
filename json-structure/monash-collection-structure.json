@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/monash/main/json-structure/monash-collection-structure.json",
+  "name": "MonashFigshareCollection",
+  "description": "JSON Structure for a figshare Collection as exposed by the Monash University Research Repository via the figshare v2 REST API.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "int64", "description": "Collection id" },
+    "title": { "type": "string", "description": "Collection title" },
+    "doi": { "type": "string", "description": "Collection DOI" },
+    "handle": { "type": "string", "description": "Collection Handle" },
+    "url": { "type": "string", "description": "Api endpoint" },
+    "timeline": {
+      "type": "object",
+      "description": "Collection timeline of publication dates",
+      "properties": {
+        "posted": { "type": "string" },
+        "firstOnline": { "type": "string" },
+        "revision": { "type": "string" }
+      }
+    }
+  },
+  "required": ["id", "title", "doi", "handle", "url", "timeline"]
+}

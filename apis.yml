@@ -46,6 +46,14 @@ apis:
         url: https://monash.figshare.com/
       - type: OAI-PMH
         url: https://api.figshare.com/v2/oai
+      - type: OpenAPI
+        url: openapi/monash-figshare.yaml
+      - type: JSONSchema
+        url: json-schema/monash-article-schema.json
+      - type: x-vocabulary
+        url: vocabulary/monash-vocabulary.yml
+      - type: x-rules
+        url: rules/monash-rules.yml
   - aid: monash:crams
     name: CRAMS API (Cloud Resource Allocation and Management System)
     description: >-

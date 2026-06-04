@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/monash/main/json-schema/monash-collection-schema.json",
+  "title": "Figshare Collection",
+  "description": "A collection of articles as returned by the figshare v2 REST API used by the Monash University Research Repository. Mirrors the Collection schema in the figshare OpenAPI definition.",
+  "type": "object",
+  "required": ["id", "title", "doi", "handle", "url", "timeline"],
+  "properties": {
+    "id": { "type": "integer", "description": "Collection id", "examples": [123] },
+    "title": { "type": "string", "description": "Collection title", "examples": ["Sample collection"] },
+    "doi": { "type": "string", "description": "Collection DOI", "examples": ["10.6084/m9.figshare.123"] },
+    "handle": { "type": "string", "description": "Collection Handle", "examples": ["111184/figshare.1234"] },
+    "url": { "type": "string", "format": "uri", "description": "Api endpoint" },
+    "timeline": {
+      "type": "object",
+      "description": "Collection timeline of publication dates",
+      "properties": {
+        "posted": { "type": "string" },
+        "firstOnline": { "type": "string" },
+        "revision": { "type": "string" }
+      }
+    }
+  },
+  "additionalProperties": true
+}

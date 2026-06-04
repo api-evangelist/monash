@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/monash/main/json-schema/monash-article-schema.json",
+  "title": "Figshare Article",
+  "description": "An article (dataset/research output) as returned by the figshare v2 REST API used by the Monash University Research Repository (monash.figshare.com). Fields mirror the Article schema in the figshare OpenAPI definition.",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "doi",
+    "handle",
+    "url",
+    "url_public_html",
+    "url_public_api",
+    "url_private_html",
+    "url_private_api",
+    "timeline",
+    "thumb",
+    "defined_type",
+    "defined_type_name",
+    "created_date",
+    "resource_title",
+    "resource_doi"
+  ],
+  "properties": {
+    "id": { "type": "integer", "description": "Unique identifier for article", "examples": [1434614] },
+    "title": { "type": "string", "description": "Title of article", "examples": ["Test article title"] },
+    "doi": { "type": "string", "description": "DOI", "examples": ["10.6084/m9.figshare.1434614"] },
+    "handle": { "type": "string", "description": "Handle", "examples": ["111184/figshare.1234"] },
+    "url": { "type": "string", "format": "uri", "description": "Api endpoint for article" },
+    "url_public_html": { "type": "string", "format": "uri", "description": "Public site endpoint for article" },
+    "url_public_api": { "type": "string", "format": "uri", "description": "Public Api endpoint for article" },
+    "url_private_html": { "type": "string", "format": "uri", "description": "Private site endpoint for article" },
+    "url_private_api": { "type": "string", "format": "uri", "description": "Private Api endpoint for article" },
+    "timeline": {
+      "type": "object",
+      "description": "Article timeline of submission/acceptance/publication dates",
+      "properties": {
+        "posted": { "type": "string", "description": "Date when first published" },
+        "firstOnline": { "type": "string", "description": "Date when first made public" },
+        "revision": { "type": "string", "description": "Date of last revision" },
+        "submission": { "type": "string" },
+        "publisherPublication": { "type": "string" },
+        "publisherAcceptance": { "type": "string" }
+      }
+    },
+    "thumb": { "type": "string", "format": "uri", "description": "Thumbnail image url" },
+    "defined_type": { "type": "integer", "description": "Type of article identifier (numeric code)" },
+    "defined_type_name": { "type": "string", "description": "Name of the article type", "examples": ["dataset", "media", "figure"] },
+    "group_id": { "type": "integer", "description": "Group identifier the article belongs to" },
+    "url_public": { "type": "string", "format": "uri" },
+    "published_date": { "type": "string", "description": "Date when published" },
+    "created_date": { "type": "string", "description": "Date when article was created" },
+    "modified_date": { "type": "string", "description": "Date when article was last modified" },
+    "resource_title": { "type": ["string", "null"], "description": "Title of associated resource" },
+    "resource_doi": { "type": ["string", "null"], "description": "DOI of associated resource" }
+  },
+  "additionalProperties": true
+}

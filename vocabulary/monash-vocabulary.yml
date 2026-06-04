@@ -1,0 +1,57 @@
+---
+vocabulary:
+  name: Monash University Research Repository (figshare) Vocabulary
+  description: >-
+    Controlled vocabulary of the core terms used by the figshare v2 REST API
+    that powers the Monash University Research Repository (monash.figshare.com).
+    Terms and definitions are derived from the real figshare OpenAPI 3.0.3
+    description and reflect only objects and fields that the API genuinely exposes.
+  version: "2.0"
+  terms:
+    - term: Article
+      definition: >-
+        A single research output (dataset, figure, media, paper, software, etc.)
+        deposited in the repository, identified by an integer id and a DOI.
+      tags: [object, research-output, core]
+    - term: Collection
+      definition: >-
+        A curated grouping of articles published together under its own DOI and handle.
+      tags: [object, grouping]
+    - term: Project
+      definition: >-
+        A workspace that organizes articles and collaborators around a body of work.
+      tags: [object, workspace]
+    - term: Author
+      definition: >-
+        A contributor associated with an article, optionally linked to an ORCID identifier.
+      tags: [object, person, attribution]
+    - term: Category
+      definition: >-
+        A subject classification drawn from a standard taxonomy, with a parent id and path.
+      tags: [object, taxonomy, classification]
+    - term: DOI
+      definition: >-
+        Digital Object Identifier minted for articles and collections to provide a
+        persistent, citable reference.
+      tags: [field, identifier, persistent]
+    - term: Handle
+      definition: >-
+        Handle System persistent identifier assigned to an article or collection.
+      tags: [field, identifier, persistent]
+    - term: ORCID
+      definition: >-
+        Open Researcher and Contributor ID stored on an author as orcid_id.
+      tags: [field, identifier, person]
+    - term: Timeline
+      definition: >-
+        Object recording key dates in an item's lifecycle (posted, firstOnline, revision).
+      tags: [field, dates, lifecycle]
+    - term: defined_type_name
+      definition: >-
+        Human-readable name of an article's type, such as dataset, media, figure or software.
+      tags: [field, classification]
+    - term: OAI-PMH
+      definition: >-
+        Open Archives Initiative Protocol for Metadata Harvesting endpoint
+        (api.figshare.com/v2/oai) for bulk metadata harvesting of repository records.
+      tags: [protocol, metadata, harvesting]

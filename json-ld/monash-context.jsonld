@@ -1,0 +1,62 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "monash": "https://www.monash.edu/ns#",
+    "figshare": "https://api.figshare.com/v2/ns#",
+    "name": "schema:name",
+    "url": "schema:url",
+    "description": "schema:description",
+
+    "Institution": "schema:CollegeOrUniversity",
+    "institution": {
+      "@id": "monash:institution",
+      "@context": {
+        "name": "schema:name",
+        "url": "schema:url",
+        "sameAs": "schema:sameAs"
+      }
+    },
+
+    "Article": "schema:Dataset",
+    "Collection": "schema:Collection",
+    "Project": "schema:Project",
+    "Author": "schema:Person",
+    "Category": "schema:CategoryCode",
+
+    "id": "schema:identifier",
+    "title": "schema:name",
+    "doi": {
+      "@id": "schema:identifier",
+      "@type": "schema:PropertyValue"
+    },
+    "handle": "figshare:handle",
+    "published_date": "schema:datePublished",
+    "created_date": "schema:dateCreated",
+    "modified_date": "schema:dateModified",
+    "defined_type_name": "schema:additionalType",
+    "authors": "schema:author",
+    "full_name": "schema:name",
+    "first_name": "schema:givenName",
+    "last_name": "schema:familyName",
+    "orcid_id": {
+      "@id": "schema:identifier",
+      "@type": "@id"
+    },
+    "thumb": "schema:thumbnailUrl",
+    "timeline": "figshare:timeline"
+  },
+  "@type": "CollegeOrUniversity",
+  "name": "Monash University",
+  "url": "https://www.monash.edu/",
+  "description": "Public research university in Melbourne, Australia, member of the Group of Eight. Its research outputs are published through the Monash University Research Repository on the figshare platform.",
+  "institution": {
+    "name": "Monash University",
+    "url": "https://monash.figshare.com/",
+    "sameAs": [
+      "https://research.monash.edu/",
+      "https://www.linkedin.com/school/monash-university/",
+      "https://ror.org/02bfwt286"
+    ]
+  }
+}

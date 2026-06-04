@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/monash/main/json-schema/monash-author-schema.json",
+  "title": "Figshare Author",
+  "description": "An author as returned by the figshare v2 REST API used by the Monash University Research Repository. Mirrors the Author schema in the figshare OpenAPI definition.",
+  "type": "object",
+  "required": ["id", "full_name", "first_name", "last_name", "is_active", "url_name", "orcid_id"],
+  "properties": {
+    "id": { "type": "integer", "description": "Author id", "examples": [97657] },
+    "full_name": { "type": "string", "description": "Author full name", "examples": ["John Doe"] },
+    "first_name": { "type": "string", "description": "Author first name", "examples": ["John"] },
+    "last_name": { "type": "string", "description": "Author last name", "examples": ["Doe"] },
+    "is_active": { "type": "boolean", "description": "True if author has published items" },
+    "url_name": { "type": "string", "description": "Author url name", "examples": ["John_Doe"] },
+    "orcid_id": { "type": "string", "description": "Author Orcid", "examples": ["1234-5678-9123-1234"] }
+  },
+  "additionalProperties": true
+}

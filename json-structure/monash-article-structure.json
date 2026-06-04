@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/monash/main/json-structure/monash-article-structure.json",
+  "name": "MonashFigshareArticle",
+  "description": "JSON Structure for a figshare Article (research output) as exposed by the Monash University Research Repository via the figshare v2 REST API.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "int64", "description": "Unique identifier for article" },
+    "title": { "type": "string", "description": "Title of article" },
+    "doi": { "type": "string", "description": "DOI" },
+    "handle": { "type": "string", "description": "Handle" },
+    "url": { "type": "string", "description": "Api endpoint for article" },
+    "url_public_html": { "type": "string", "description": "Public site endpoint for article" },
+    "url_public_api": { "type": "string", "description": "Public Api endpoint for article" },
+    "defined_type": { "type": "int32", "description": "Numeric code for the article type" },
+    "defined_type_name": { "type": "string", "description": "Name of the article type" },
+    "group_id": { "type": "int32", "description": "Group identifier the article belongs to" },
+    "published_date": { "type": "string", "description": "Date when published" },
+    "created_date": { "type": "string", "description": "Date when article was created" },
+    "modified_date": { "type": "string", "description": "Date when article was last modified" },
+    "thumb": { "type": "string", "description": "Thumbnail image url" },
+    "timeline": {
+      "type": "object",
+      "description": "Article timeline of publication dates",
+      "properties": {
+        "posted": { "type": "string" },
+        "firstOnline": { "type": "string" },
+        "revision": { "type": "string" }
+      }
+    }
+  },
+  "required": ["id", "title", "doi", "handle", "url", "defined_type", "defined_type_name", "created_date"]
+}

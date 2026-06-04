@@ -1,0 +1,65 @@
+---
+# Spectral ruleset for the Monash University Research Repository (figshare v2) API.
+# Encodes patterns observed in the real figshare OpenAPI 3.0.3 description
+# (https://docs.figshare.com/swagger.json) used at monash.figshare.com.
+formats:
+  - oas3
+rules:
+  monash-info-contact:
+    description: API info object should declare a contact (figshare publishes Figshare Support).
+    severity: warn
+    given: $.info
+    then:
+      field: contact
+      function: truthy
+
+  monash-info-license:
+    description: API info object should declare a license.
+    severity: warn
+    given: $.info
+    then:
+      field: license
+      function: truthy
+
+  monash-server-figshare-v2:
+    description: Server URL should target the figshare v2 API base (api.figshare.com/v2).
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: "https://api\\.figshare\\.com/v2"
+
+  monash-operation-id-required:
+    description: Every operation should define an operationId.
+    severity: error
+    given: $.paths[*][get,post,put,delete,patch]
+    then:
+      field: operationId
+      function: truthy
+
+  monash-operation-tags:
+    description: Operations should be grouped with at least one tag (e.g. articles, collections, projects).
+    severity: warn
+    given: $.paths[*][get,post,put,delete,patch]
+    then:
+      field: tags
+      function: truthy
+
+  monash-article-id-integer:
+    description: Identifiers such as the article id are integers in the figshare model.
+    severity: info
+    given: $.components.schemas.Article.properties.id
+    then:
+      field: type
+      function: pattern
+      functionOptions:
+        match: "integer"
+
+  monash-doi-present:
+    description: Research-output objects should expose a DOI for persistent identification.
+    severity: info
+    given: $.components.schemas[Article,Collection].properties
+    then:
+      field: doi
+      function: truthy

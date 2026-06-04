@@ -1,0 +1,37 @@
+{
+  "operation": "GET /articles/{article_id}",
+  "description": "Representative detail response for a single public article from the figshare v2 API, including authors. Field shapes follow the figshare ArticleComplete / Author schemas.",
+  "request": {
+    "method": "GET",
+    "url": "https://api.figshare.com/v2/articles/1434614"
+  },
+  "response": {
+    "id": 1434614,
+    "title": "Test article title",
+    "doi": "10.6084/m9.figshare.1434614",
+    "handle": "111184/figshare.1234",
+    "url": "https://api.figshare.com/v2/articles/1434614",
+    "figshare_url": "https://figshare.com/articles/media/Test_article_title/1434614",
+    "download_disabled": false,
+    "defined_type": 3,
+    "defined_type_name": "dataset",
+    "published_date": "2017-05-16T14:52:54Z",
+    "created_date": "2017-05-16T14:50:00Z",
+    "modified_date": "2017-05-16T14:52:54Z",
+    "authors": [
+      {
+        "id": 97657,
+        "full_name": "John Doe",
+        "first_name": "John",
+        "last_name": "Doe",
+        "is_active": true,
+        "url_name": "John_Doe",
+        "orcid_id": "1234-5678-9123-1234"
+      }
+    ],
+    "files": [],
+    "custom_fields": [],
+    "folder_structure": {},
+    "embargo_options": []
+  }
+}

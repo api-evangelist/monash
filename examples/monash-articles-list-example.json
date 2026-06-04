@@ -1,0 +1,32 @@
+{
+  "operation": "GET /articles",
+  "description": "Representative response payload for listing public articles from the figshare v2 API (api.figshare.com/v2), as used by the Monash University Research Repository. Field shapes follow the figshare Article schema.",
+  "request": {
+    "method": "GET",
+    "url": "https://api.figshare.com/v2/articles?page=1&page_size=2"
+  },
+  "response": [
+    {
+      "id": 1434614,
+      "title": "Test article title",
+      "doi": "10.6084/m9.figshare.1434614",
+      "handle": "111184/figshare.1234",
+      "url": "https://api.figshare.com/v2/articles/1434614",
+      "url_public_html": "https://figshare.com/articles/media/Test_article_title/1434614",
+      "url_public_api": "https://api.figshare.com/v2/articles/1434614",
+      "url_private_html": "https://figshare.com/account/articles/1434614",
+      "url_private_api": "https://api.figshare.com/v2/account/articles/1434614",
+      "published_date": "2017-05-16T14:52:54Z",
+      "thumb": "https://ndownloader.figshare.com/files/12345/thumb",
+      "defined_type": 3,
+      "defined_type_name": "dataset",
+      "group_id": 0,
+      "timeline": {
+        "posted": "2017-05-16T14:52:54",
+        "firstOnline": "2017-05-16T14:52:54"
+      },
+      "resource_title": null,
+      "resource_doi": null
+    }
+  ]
+}
