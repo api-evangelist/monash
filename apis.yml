@@ -68,6 +68,8 @@ apis:
       - type: Documentation
         url: https://crams-api.erc.monash.edu/
 common:
+  - type: AgenticAccess
+    url: agentic-access/monash-agentic-access.yml
   - type: TrustCenter
     url: security/monash-trust-center.yml
   - type: DomainSecurity
