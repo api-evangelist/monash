@@ -13,9 +13,22 @@ description: >-
   orgs. No central, openly documented institutional developer portal for course,
   catalog, timetable, or SIS APIs was found to be publicly available.
 type: Index
+accessModel:
+  pricing: free
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Free · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/monash.png
 url: https://raw.githubusercontent.com/api-evangelist/monash/refs/heads/main/apis.yml
 tags:
   - Education
@@ -28,45 +41,241 @@ created: '2026-06-03'
 modified: '2026-06-03'
 specificationVersion: '0.19'
 apis:
-  - aid: monash:figshare
-    name: Monash University Research Repository (monash.figshare)
-    description: >-
-      The Monash University research data repository runs on the figshare
-      platform at monash.figshare.com. Research outputs are accessible
-      programmatically through the public figshare v2 REST API and via the
-      figshare OAI-PMH endpoint for metadata harvesting. DOIs and ORCID are
-      supported for persistent identification.
-    humanURL: https://monash.figshare.com/
-    baseURL: https://api.figshare.com/v2
-    tags: [ Research Data, Repository, OAI-PMH, Open Data, figshare ]
-    properties:
-      - type: Documentation
-        url: https://docs.figshare.com/
-      - type: Website
-        url: https://monash.figshare.com/
-      - type: OAI-PMH
-        url: https://api.figshare.com/v2/oai
-      - type: OpenAPI
-        url: openapi/monash-figshare.yaml
-      - type: JSONSchema
-        url: json-schema/monash-article-schema.json
-      - type: x-vocabulary
-        url: vocabulary/monash-vocabulary.yml
-      - type: x-rules
-        url: rules/monash-rules.yml
-  - aid: monash:crams
-    name: CRAMS API (Cloud Resource Allocation and Management System)
-    description: >-
-      Monash eResearch operates the Cloud Resource Allocation and Management
-      System (CRAMS), which exposes an API portal used to manage research cloud
-      resource allocations. Access is institutional/gated; no open public
-      specification was located.
-    humanURL: https://crams-api.erc.monash.edu/
-    baseURL: https://crams-api.erc.monash.edu/
-    tags: [ eResearch, Cloud, Research Infrastructure ]
-    properties:
-      - type: Documentation
-        url: https://crams-api.erc.monash.edu/
+- aid: monash:crams
+  name: CRAMS API (Cloud Resource Allocation and Management System)
+  description: >-
+    Monash eResearch operates the Cloud Resource Allocation and Management System (CRAMS), which exposes
+    an API portal used to manage research cloud resource allocations. Access is institutional/gated; no
+    open public specification was located.
+  humanURL: https://crams-api.erc.monash.edu/
+  baseURL: https://crams-api.erc.monash.edu/
+  tags:
+  - eResearch
+  - Cloud
+  - Research Infrastructure
+  properties:
+  - type: Documentation
+    url: https://crams-api.erc.monash.edu/
+- aid: monash:monash-altmetric-api
+  name: Monash University altmetric API
+  description: The altmetric API from Monash University — 1 operation(s) for altmetric.
+  humanURL: https://monash.figshare.com/
+  baseURL: https://api.figshare.com/v2
+  tags:
+  - altmetric
+  properties:
+  - type: OpenAPI
+    url: openapi/monash-altmetric-api-openapi.yml
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: Website
+    url: https://monash.figshare.com/
+  - type: OAI-PMH
+    url: https://api.figshare.com/v2/oai
+  - type: JSONSchema
+    url: json-schema/monash-article-schema.json
+  - type: x-vocabulary
+    url: vocabulary/monash-vocabulary.yml
+  - type: x-rules
+    url: rules/monash-rules.yml
+- aid: monash:monash-articles-api
+  name: Monash University articles API
+  description: The articles API from Monash University — 34 operation(s) for articles.
+  humanURL: https://monash.figshare.com/
+  baseURL: https://api.figshare.com/v2
+  tags:
+  - articles
+  properties:
+  - type: OpenAPI
+    url: openapi/monash-articles-api-openapi.yml
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: Website
+    url: https://monash.figshare.com/
+  - type: OAI-PMH
+    url: https://api.figshare.com/v2/oai
+  - type: JSONSchema
+    url: json-schema/monash-article-schema.json
+  - type: x-vocabulary
+    url: vocabulary/monash-vocabulary.yml
+  - type: x-rules
+    url: rules/monash-rules.yml
+- aid: monash:monash-authors-api
+  name: Monash University authors API
+  description: The authors API from Monash University — 2 operation(s) for authors.
+  humanURL: https://monash.figshare.com/
+  baseURL: https://api.figshare.com/v2
+  tags:
+  - authors
+  properties:
+  - type: OpenAPI
+    url: openapi/monash-authors-api-openapi.yml
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: Website
+    url: https://monash.figshare.com/
+  - type: OAI-PMH
+    url: https://api.figshare.com/v2/oai
+  - type: JSONSchema
+    url: json-schema/monash-article-schema.json
+  - type: x-vocabulary
+    url: vocabulary/monash-vocabulary.yml
+  - type: x-rules
+    url: rules/monash-rules.yml
+- aid: monash:monash-collections-api
+  name: Monash University collections API
+  description: The collections API from Monash University — 21 operation(s) for collections.
+  humanURL: https://monash.figshare.com/
+  baseURL: https://api.figshare.com/v2
+  tags:
+  - collections
+  properties:
+  - type: OpenAPI
+    url: openapi/monash-collections-api-openapi.yml
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: Website
+    url: https://monash.figshare.com/
+  - type: OAI-PMH
+    url: https://api.figshare.com/v2/oai
+  - type: JSONSchema
+    url: json-schema/monash-article-schema.json
+  - type: x-vocabulary
+    url: vocabulary/monash-vocabulary.yml
+  - type: x-rules
+    url: rules/monash-rules.yml
+- aid: monash:monash-institutions-api
+  name: Monash University institutions API
+  description: The institutions API from Monash University — 20 operation(s) for institutions.
+  humanURL: https://monash.figshare.com/
+  baseURL: https://api.figshare.com/v2
+  tags:
+  - institutions
+  properties:
+  - type: OpenAPI
+    url: openapi/monash-institutions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: Website
+    url: https://monash.figshare.com/
+  - type: OAI-PMH
+    url: https://api.figshare.com/v2/oai
+  - type: JSONSchema
+    url: json-schema/monash-article-schema.json
+  - type: x-vocabulary
+    url: vocabulary/monash-vocabulary.yml
+  - type: x-rules
+    url: rules/monash-rules.yml
+- aid: monash:monash-oauth-api
+  name: Monash University oauth API
+  description: The oauth API from Monash University — 1 operation(s) for oauth.
+  humanURL: https://monash.figshare.com/
+  baseURL: https://api.figshare.com/v2
+  tags:
+  - oauth
+  properties:
+  - type: OpenAPI
+    url: openapi/monash-oauth-api-openapi.yml
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: Website
+    url: https://monash.figshare.com/
+  - type: OAI-PMH
+    url: https://api.figshare.com/v2/oai
+  - type: JSONSchema
+    url: json-schema/monash-article-schema.json
+  - type: x-vocabulary
+    url: vocabulary/monash-vocabulary.yml
+  - type: x-rules
+    url: rules/monash-rules.yml
+- aid: monash:monash-other-api
+  name: Monash University other API
+  description: The other API from Monash University — 7 operation(s) for other.
+  humanURL: https://monash.figshare.com/
+  baseURL: https://api.figshare.com/v2
+  tags:
+  - other
+  properties:
+  - type: OpenAPI
+    url: openapi/monash-other-api-openapi.yml
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: Website
+    url: https://monash.figshare.com/
+  - type: OAI-PMH
+    url: https://api.figshare.com/v2/oai
+  - type: JSONSchema
+    url: json-schema/monash-article-schema.json
+  - type: x-vocabulary
+    url: vocabulary/monash-vocabulary.yml
+  - type: x-rules
+    url: rules/monash-rules.yml
+- aid: monash:monash-profiles-api
+  name: Monash University profiles API
+  description: The profiles API from Monash University — 2 operation(s) for profiles.
+  humanURL: https://monash.figshare.com/
+  baseURL: https://api.figshare.com/v2
+  tags:
+  - profiles
+  properties:
+  - type: OpenAPI
+    url: openapi/monash-profiles-api-openapi.yml
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: Website
+    url: https://monash.figshare.com/
+  - type: OAI-PMH
+    url: https://api.figshare.com/v2/oai
+  - type: JSONSchema
+    url: json-schema/monash-article-schema.json
+  - type: x-vocabulary
+    url: vocabulary/monash-vocabulary.yml
+  - type: x-rules
+    url: rules/monash-rules.yml
+- aid: monash:monash-projects-api
+  name: Monash University projects API
+  description: The projects API from Monash University — 17 operation(s) for projects.
+  humanURL: https://monash.figshare.com/
+  baseURL: https://api.figshare.com/v2
+  tags:
+  - projects
+  properties:
+  - type: OpenAPI
+    url: openapi/monash-projects-api-openapi.yml
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: Website
+    url: https://monash.figshare.com/
+  - type: OAI-PMH
+    url: https://api.figshare.com/v2/oai
+  - type: JSONSchema
+    url: json-schema/monash-article-schema.json
+  - type: x-vocabulary
+    url: vocabulary/monash-vocabulary.yml
+  - type: x-rules
+    url: rules/monash-rules.yml
+- aid: monash:monash-symplectic-api
+  name: Monash University symplectic API
+  description: The symplectic API from Monash University — 5 operation(s) for symplectic.
+  humanURL: https://monash.figshare.com/
+  baseURL: https://api.figshare.com/v2
+  tags:
+  - symplectic
+  properties:
+  - type: OpenAPI
+    url: openapi/monash-symplectic-api-openapi.yml
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: Website
+    url: https://monash.figshare.com/
+  - type: OAI-PMH
+    url: https://api.figshare.com/v2/oai
+  - type: JSONSchema
+    url: json-schema/monash-article-schema.json
+  - type: x-vocabulary
+    url: vocabulary/monash-vocabulary.yml
+  - type: x-rules
+    url: rules/monash-rules.yml
 common:
   - type: AgenticAccess
     url: agentic-access/monash-agentic-access.yml
