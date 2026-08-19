@@ -39,7 +39,7 @@ tags:
   - Australia
 created: '2026-06-03'
 modified: '2026-06-03'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: monash:crams
   name: CRAMS API (Cloud Resource Allocation and Management System)
