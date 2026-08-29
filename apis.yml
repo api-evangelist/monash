@@ -17,6 +17,17 @@ description: 'Monash University is a public research university in Melbourne, Au
   contracts. No central institutional developer portal, no open data portal, and no institution-operated
   OAI-PMH endpoint were found.'
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: free
   onboarding: institutional
