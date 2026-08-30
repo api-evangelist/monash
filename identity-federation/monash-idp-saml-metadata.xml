@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EntityDescriptor entityID="https://idp.monash.edu.au/idp/shibboleth" xmlns="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:shibmd="urn:mace:shibboleth:metadata:1.0">
+  <IDPSSODescriptor WantAuthnRequestsSigned="false" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+    <Extensions>
+      <shibmd:Scope regexp="false">monash.edu.au</shibmd:Scope>
+    </Extensions>
+    <KeyDescriptor use="signing">
+      <ds:KeyInfo>
+        <ds:KeyName>monash-idp-signing</ds:KeyName>
+        <ds:X509Data>
+          <ds:X509Certificate>
+MIIDMDCCAhigAwIBAgIVAK9xBPTkvJ1m/OIiq8Es2Dfip07ZMA0GCSqGSIb3DQEB
+CwUAMBwxGjAYBgNVBAMMEWlkcC5tb25hc2guZWR1LmF1MB4XDTE3MDUwMjIyMDEy
+M1oXDTM3MDUwMjIyMDEyM1owHDEaMBgGA1UEAwwRaWRwLm1vbmFzaC5lZHUuYXUw
+ggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDJ0eF7kd5lwHTy8n2jTpYa
+CnSVdVgc6bHVboGIMQuNpbfdpgSfT+xtk+1aQnsT47Hya1M92GvPhz6DECsusUKD
+VwiQt0KyFe6Iaxgi6+doSbF1xzh8W/AtKLhcLRTSw3YEb9thC+NxpOXKuvXaQyLG
+ioEUvv6chU/tEgSUsQylu54ab5E/kHH2yyJvIgmyojIS/XIffqMkRYMyCqeaiPXU
+ry4a72PRtvF8CF7IYdhTjAjaoX8zmOtSyVvcHAY7krd4LM1ZH5Vyxxle9SwFaqV2
+0HdhKupgL+m8KyznPuD4uK/19pxv4iX9fr6+AAtTIVMX6nIZyOydc/2kvp+MpONp
+AgMBAAGjaTBnMB0GA1UdDgQWBBQ4DFrAq9vmI3dDvxuIFo11OPtecjBGBgNVHREE
+PzA9ghFpZHAubW9uYXNoLmVkdS5hdYYoaHR0cHM6Ly9pZHAubW9uYXNoLmVkdS5h
+dS9pZHAvc2hpYmJvbGV0aDANBgkqhkiG9w0BAQsFAAOCAQEAGFVwju0ARs5EGWZn
+hej4D6hH8lPmYaNBW4YobyBu5dAVr8uxkIDge3bvyJcDfX69XC36trqvOo+Ubd2s
+Y62Y2q71eAu9n3yYEpNtFhY5b5eiETIOikOCkUuVep8KSlL6cUPdqdpNpaCPsPbO
+YpnUIhNe7ZHs11kcMcP9IeghryJtC/wLKCZ/7TCfNEUsCuK08aU/YO3SPiKT8nDD
+HK8Agb2vEY+fa9qakISIJJ4hRBtd3nr2ZFgk/Ya/LF1w+Fc/ro/9h2bQdJYUJL7L
+vhU1ItaePvA5Fnsk7e1qCECogkFlRyLXY8VxCbJYqaTJ3YCAuh+E+//5EFjkpe3Y
+P/IoQw==
+          </ds:X509Certificate>
+        </ds:X509Data>
+      </ds:KeyInfo>
+    </KeyDescriptor>
+    <KeyDescriptor use="encryption">
+      <ds:KeyInfo>
+        <ds:KeyName>monash-encryption-cert</ds:KeyName>
+        <ds:X509Data>
+          <ds:X509Certificate>
+MIIDMDCCAhigAwIBAgIVAKfObxqpF3AODXRwhx+GiEWiRhEoMA0GCSqGSIb3DQEB
+CwUAMBwxGjAYBgNVBAMMEWlkcC5tb25hc2guZWR1LmF1MB4XDTE3MDUwMjIyMDEy
+NFoXDTM3MDUwMjIyMDEyNFowHDEaMBgGA1UEAwwRaWRwLm1vbmFzaC5lZHUuYXUw
+ggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCHE2Wk/TzdSPO0yP+a1dAi
+F0QWQ6wQ/E8dzMeuSl5DnHdZuR8lgEdNc62ZEbWuYJOmVsf43InzWufnVK+Ovdog
++uaD535hOB7joGIz+LOWTtZs6O7mmz5Wvjq36rj5IiUKj87LqPq7Yys7/Sc4mshC
+LVAD5DGwyQWFpWT1HRCq2fWq1SzAzAnd3IL7wK18jNMsNgbXvWtcri5m0wzGv/HF
+LThpRo0i6fUftY6RrHDaPKoLfztBsoDrsLLYZPAQ72Y/Q/7H0lBoCqwjfACTFcvp
+PUhEueJbeknQs7hlP3bccze1iqZW94PoTyT1rmFTu5t1nsjvtPnFVWyKJDenMbcJ
+AgMBAAGjaTBnMB0GA1UdDgQWBBR6OJHOWFCmFBAnLBjAP/Xs6+wJOjBGBgNVHREE
+PzA9ghFpZHAubW9uYXNoLmVkdS5hdYYoaHR0cHM6Ly9pZHAubW9uYXNoLmVkdS5h
+dS9pZHAvc2hpYmJvbGV0aDANBgkqhkiG9w0BAQsFAAOCAQEAEk9VF5jPG9Wrx5qb
+Pewbeoprs8wmmLMc70zVvj89ss+24P+/a37Www87Qi871DGLZdHUc+SPnkt/0uoL
+PPQJKwehPm10V2b9G05C0pIkiWr9LuwvnRPf+eeukbDUHbL2oxbLdTtKwUx0U0Tz
+8UA1AEu0U0fw/0qBXWTipMwSxsCGPmSIk8vnA9aT8tFWjrdBf6HP5ey2HwFFK7Wl
+WjEavlRg01lb0hD+UKeWnFfxRGoxBZOOfJJsaxbnDOYy6GHI2kfqi1IBHukhgKDr
+mkCHeQ7GZS0varzG0a0XPIO7oB0Jc1tCSEuVzH3FKe7giEOVaq729otgNOST49bQ
+Y2QEAg==
+          </ds:X509Certificate>
+        </ds:X509Data>
+      </ds:KeyInfo>
+    </KeyDescriptor>
+    <NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</NameIDFormat>
+    <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://idp.monash.edu.au/idp/profile/SAML2/POST/SSO"/>
+    <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://idp.monash.edu.au/idp/profile/SAML2/Redirect/SSO"/>
+    <saml:Attribute Name="urn:oid:1.3.6.1.4.1.27856.1.2.5" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri" FriendlyName="auEduPersonSharedToken"/>
+    <saml:Attribute Name="urn:oid:0.9.2342.19200300.100.1.3" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri" FriendlyName="email"/>
+    <saml:Attribute Name="urn:oid:2.16.840.1.113730.3.1.241" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri" FriendlyName="displayName"/>
+  </IDPSSODescriptor>
+  <Organization>
+    <OrganizationName xml:lang="en">monash.edu.au</OrganizationName>
+    <OrganizationDisplayName xml:lang="en">Monash University</OrganizationDisplayName>
+    <OrganizationURL xml:lang="en">https://www.monash.edu/</OrganizationURL>
+  </Organization>
+</EntityDescriptor>

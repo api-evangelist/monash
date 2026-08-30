@@ -1,0 +1,191 @@
+specification: API Evangelist Domain Standard Conformance
+specificationVersion: '0.1'
+provider: Monash University
+providerId: monash
+regime: education
+generated: '2026-08-19'
+method: probed
+source: >-
+  The Australian Access Federation production metadata aggregate
+  https://md.aaf.edu.au/aaf-metadata.xml (HTTP 200), parsed for every EntityDescriptor
+  naming Monash; the SAML 2.0 EntityDescriptor served at
+  https://idp.monash.edu.au/idp/shibboleth (HTTP 200, application/xml), archived locally
+  at identity-federation/monash-idp-saml-metadata.xml; and DNS/whois resolution of every
+  host involved, to settle who operates the thing each contract describes.
+description: >-
+  Conformance against the Kin Score `education` regulatory regime standards list
+  (scim, lti, oneroster, ed-fi, caliper, qti, oai-pmh, shibboleth, saml, orcid, datacite,
+  crossref). Reward-only: a standard is recorded as conformant for Monash only where an
+  INSTITUTION-OPERATED contract demonstrates it. Standards reached only through a vendor
+  or managed platform running under a Monash hostname are listed separately as
+  tenant-operated, because the conformance belongs to that platform's engineering, not to
+  Monash's.
+
+  Operator was settled by IP ownership, not hostname. That check changed the answer: the
+  Monash-branded Shibboleth IdP at idp.monash.edu.au publishes the strongest
+  machine-readable contract in this profile, but resolves onto Amazon address space behind
+  AAF's Rapid IdP managed service, so its conformance is AAF's. Monash's own SAML
+  conformance rests instead on the Shibboleth service provider it runs on its own APNIC
+  allocation.
+
+conforms:
+- standard: saml
+  name: SAML 2.0
+  status: conformant
+  x-operator: institution
+  confidence: moderate
+  evidence:
+    url: https://md.aaf.edu.au/aaf-metadata.xml
+    status: 200
+    entity: https://hpc.erc.monash.edu.au/shibboleth
+    locations:
+    - 'EntityDescriptor[@entityID="https://hpc.erc.monash.edu.au/shibboleth"]/SPSSODescriptor'
+    - 'EntityDescriptor/Organization/OrganizationDisplayName = Monash University'
+    - 'mdui:DisplayName = Monash eResearch Center HPC ID'
+    corroboration:
+      resolved_ip: 118.138.238.241
+      ip_owner: MONASHUNI-NET3 / ORG-MU4-AP — Monash University (APNIC)
+      tls_issuer: C=GB, O=Sectigo Limited, CN=Sectigo Public Server Authentication CA OV R36
+      note: >-
+        Monash-procured OV certificate on Monash's own address space — the same
+        procurement pattern as crams-api.erc.monash.edu, and unlike the Amazon-issued
+        certificate fronting the AAF-managed IdP.
+  note: >-
+    Monash operates a SAML 2.0 service provider on its own infrastructure and registers it
+    in a national federation. Confidence is moderate rather than high because the
+    authoritative machine-readable description of this SP lives in AAF's aggregate; the
+    entityID itself dereferences to an HTML login page, so Monash does not self-publish
+    per-entity metadata for it.
+
+- standard: shibboleth
+  name: Shibboleth
+  status: conformant
+  x-operator: institution
+  confidence: moderate
+  evidence:
+    url: https://md.aaf.edu.au/aaf-metadata.xml
+    status: 200
+    entity: https://hpc.erc.monash.edu.au/shibboleth
+    locations:
+    - 'entityID path component "/shibboleth" — Shibboleth SP default metadata handler'
+    - 'EntityDescriptor/Organization/OrganizationDisplayName = Monash University'
+    federation:
+      name: Australian Access Federation
+      aggregate: https://md.aaf.edu.au/aaf-metadata.xml
+      status: 200
+      entity_present: true
+      interfederation: eduGAIN
+  note: >-
+    A Shibboleth SP run by Monash eResearch on Monash hardware, federated through AAF and
+    therefore reachable from eduGAIN.
+
+tenant_operated:
+- standard: saml
+  x-operator: tenant
+  platform: AAF Rapid IdP
+  detail: >-
+    https://idp.monash.edu.au/idp/shibboleth serves a complete signed SAML 2.0 IdP
+    EntityDescriptor (HTTP 200, application/xml) declaring HTTP-POST and HTTP-Redirect SSO
+    bindings, separate signing and encryption key descriptors, shibmd:Scope monash.edu.au,
+    and release of auEduPersonSharedToken, email and displayName. It is a textbook
+    conformant contract — and it is not Monash's engineering. idp.monash.edu.au CNAMEs to
+    c2d8eee96e6328c487bda2d5476f7050.idp-cname.aaf.edu.au and resolves to 18.239.183.0/24
+    (Amazon Technologies Inc., AT-88-Z). AAF's Rapid IdP is a fully managed SaaS IdP.
+    NOT credited to Monash.
+  evidence:
+  - url: https://idp.monash.edu.au/idp/shibboleth
+    status: 200
+  artifact: identity-federation/monash-idp-saml-metadata.xml
+
+- standard: shibboleth
+  x-operator: tenant
+  platform: AAF Rapid IdP
+  detail: >-
+    Same contract as above. Carries urn:mace:shibboleth:metadata:1.0 extensions and a
+    Jetty(12.1.0) server header, but runs on AAF-managed infrastructure. NOT credited to
+    Monash.
+  evidence:
+  - url: https://idp.monash.edu.au/idp/shibboleth
+    status: 200
+
+not_conformant:
+- standard: oai-pmh
+  reason: vendor_operated
+  detail: >-
+    Monash's OAI-PMH harvesting surface is Figshare's. bridges.monash.edu is a CNAME to
+    figshare.com and https://bridges.monash.edu/oai?verb=Identify returned HTTP 202 with
+    an empty body and header x-amzn-waf-action: challenge — an AWS WAF bot challenge, not
+    an Identify response. The generic endpoint api.figshare.com/v2/oai is a vendor host
+    shared by every Figshare customer. No institution-operated OAI-PMH endpoint located.
+  evidence:
+  - url: https://bridges.monash.edu/oai?verb=Identify
+    status: 202
+  - url: https://monash.figshare.com/oai?verb=Identify
+    status: 202
+
+- standard: orcid
+  reason: vendor_operated
+  detail: >-
+    ORCID integration is reached through research.monash.edu, which DNS resolves as a
+    CNAME chain to monash.elsevierpure.com -> apac.prod.elsevierpure.com. That is Elsevier
+    Pure's contract under a Monash hostname, not a Monash contract.
+  evidence:
+  - url: https://research.monash.edu/
+    status: 200
+  - url: https://research.monash.edu/ws/oai?verb=Identify
+    status: 500
+
+- standard: datacite
+  reason: vendor_operated
+  detail: >-
+    DOI minting for Monash research outputs runs through the Figshare-operated Bridges
+    repository. The DOIs and the data are Monash's; the DataCite integration is Figshare's.
+  evidence:
+  - url: https://bridges.monash.edu/
+    status: 202
+
+- standard: crossref
+  reason: not_found
+  detail: No institution-operated Crossref deposit or query surface located.
+
+- standard: scim
+  reason: not_found
+  detail: >-
+    No SCIM provisioning endpoint located. Note that Monash's identity plane is federated
+    via SAML rather than provisioned via SCIM, and the IdP half of it is outsourced.
+
+- standard: lti
+  reason: not_found
+  detail: >-
+    Monash's LMS is Moodle, operated behind authentication. No public LTI tool or platform
+    registration contract located.
+
+- standard: oneroster
+  reason: not_found
+  detail: No OneRoster surface located.
+
+- standard: ed-fi
+  reason: not_found
+  detail: Ed-Fi is a US K-12 data standard; not applicable to an Australian university.
+
+- standard: caliper
+  reason: not_found
+  detail: No Caliper Analytics event surface located.
+
+- standard: qti
+  reason: not_found
+  detail: No QTI assessment interchange surface located.
+
+summary:
+  standards_evaluated: 12
+  conformant_institution: 2
+  conformant_institution_standards:
+  - saml
+  - shibboleth
+  conformant_tenant_only: 2
+  vendor_operated: 3
+  not_found: 7
+  note: >-
+    Both institution-level conformances rest on a single artifact — the AAF aggregate entry
+    for the hpc.erc.monash.edu.au service provider. If that SP is retired, Monash's
+    institution-operated domain-standard conformance goes to zero.
