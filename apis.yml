@@ -41,7 +41,7 @@ accessModel:
   - plans
   generated: '2026-08-19'
   method: derived
-position: Consumer
+position: Consuming
 access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/monash.png
 url: https://raw.githubusercontent.com/api-evangelist/monash/refs/heads/main/apis.yml
