@@ -75,6 +75,11 @@ apis:
   - Identity Federation
   - SAML
   - Shibboleth
+  - SSO
+  tags_raw:
+  - Identity Federation
+  - SAML
+  - Shibboleth
   - Single Sign-On
   properties:
   - type: IdentityFederation
@@ -184,6 +189,10 @@ apis:
   humanURL: https://research.monash.edu/
   baseURL: https://research.monash.edu/
   tags:
+  - Research Repository
+  - Research Outputs
+  - CRI
+  tags_raw:
   - Research Repository
   - Research Outputs
   - CRIS
