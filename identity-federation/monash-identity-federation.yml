@@ -1,0 +1,144 @@
+specification: API Evangelist Identity Federation
+specificationVersion: '0.1'
+provider: Monash University
+providerId: monash
+generated: '2026-08-19'
+method: probed
+source: >-
+  Live fetch of https://idp.monash.edu.au/idp/shibboleth (SAML 2.0 EntityDescriptor,
+  HTTP 200, application/xml) plus the Australian Access Federation production metadata
+  aggregate https://md.aaf.edu.au/aaf-metadata.xml (HTTP 200, 3,162,605 bytes), parsed
+  for every EntityDescriptor whose entityID contains "monash".
+description: >-
+  Monash University's SAML 2.0 identity federation surface, with operator settled by DNS
+  and IP ownership rather than by hostname. The headline result is a correction: the
+  Monash-branded Identity Provider at idp.monash.edu.au is NOT Monash-operated. It is a
+  tenant of the Australian Access Federation's Rapid IdP, a fully AAF-managed SaaS
+  platform — idp.monash.edu.au CNAMEs to <hash>.idp-cname.aaf.edu.au and terminates on
+  Amazon CloudFront address space, the identical pattern to idp.unimelb.edu.au. The
+  identity data, attribute-release policy, scope and organization block are Monash's; the
+  infrastructure and the metadata-serving endpoint are AAF's.
+
+  What IS institution-operated is the other side of the federation: the Shibboleth service
+  provider hpc.erc.monash.edu.au, which resolves into MONASHUNI-NET3, Monash University's
+  own APNIC allocation, on a Monash-procured Sectigo OV certificate. That is Monash
+  running SAML on Monash hardware.
+
+federation:
+  name: Australian Access Federation
+  abbreviation: AAF
+  metadata_aggregate: https://md.aaf.edu.au/aaf-metadata.xml
+  interfederation: eduGAIN
+  explorer: https://met.refeds.org/met/federation/australian-access-federation/
+  probed: '2026-08-19'
+  status: 200
+
+identity_provider:
+  entityID: https://idp.monash.edu.au/idp/shibboleth
+  x-operator: tenant
+  operator_basis: >-
+    Hostname is Monash's, infrastructure is not. idp.monash.edu.au CNAMEs to
+    c2d8eee96e6328c487bda2d5476f7050.idp-cname.aaf.edu.au and resolves to 18.239.183.0/24,
+    which whois attributes to Amazon Technologies Inc. (AT-88-Z), i.e. CloudFront. The
+    idp-cname.aaf.edu.au pattern is AAF's Rapid IdP managed service, which AAF documents as
+    "fully cloud-hosted ... AAF manages the infrastructure for your organisation", and which
+    AAF states more than half its member organisations now use. idp.unimelb.edu.au shows the
+    identical CNAME shape; by contrast idp.uq.edu.au resolves into UQ's own 130.102.0.0/16,
+    so the pattern genuinely discriminates self-hosted from managed. The TLS certificate is
+    Amazon-issued, unlike the Sectigo OV certificates Monash procures for the hosts it runs
+    itself. Recorded as a tenant relationship, not deleted: Monash's federated identity is a
+    real institutional fact and one of its few programmable surfaces.
+  managed_platform:
+    name: AAF Rapid IdP
+    operator: Australian Access Federation
+    url: https://aaf.edu.au/subscribers/rapididp/
+    cname_target: c2d8eee96e6328c487bda2d5476f7050.idp-cname.aaf.edu.au
+    resolved_ip_owner: Amazon Technologies Inc. (AT-88-Z)
+  metadata_url: https://idp.monash.edu.au/idp/shibboleth
+  metadata_status: 200
+  metadata_content_type: application/xml;charset=utf-8
+  local_copy: identity-federation/monash-idp-saml-metadata.xml
+  software: Shibboleth IdP
+  server_header: Jetty(12.1.0)
+  protocol_support: urn:oasis:names:tc:SAML:2.0:protocol
+  scope: monash.edu.au
+  organization:
+    name: monash.edu.au
+    display_name: Monash University
+    url: https://www.monash.edu/
+  key_descriptors:
+  - use: signing
+    key_name: monash-idp-signing
+    subject: CN=idp.monash.edu.au
+    not_after: '2037-05-02'
+  - use: encryption
+    key_name: monash-encryption-cert
+  endpoints:
+  - service: SingleSignOnService
+    binding: urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST
+    location: https://idp.monash.edu.au/idp/profile/SAML2/POST/SSO
+  - service: SingleSignOnService
+    binding: urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect
+    location: https://idp.monash.edu.au/idp/profile/SAML2/Redirect/SSO
+  released_attributes:
+  - name: urn:oid:1.3.6.1.4.1.27856.1.2.5
+    friendly_name: auEduPersonSharedToken
+    note: AAF-specific persistent identifier for Australian higher education.
+  - name: urn:oid:0.9.2342.19200300.100.1.3
+    friendly_name: email
+  - name: urn:oid:2.16.840.1.113730.3.1.241
+    friendly_name: displayName
+
+service_providers:
+- entityID: https://hpc.erc.monash.edu.au/shibboleth
+  display_name: Monash eResearch Center HPC ID
+  organization: Monash University
+  x-operator: institution
+  operator_basis: >-
+    Resolves to 118.138.238.241, inside netname MONASHUNI-NET3 / ORG-MU4-AP, "Monash
+    University" (APNIC). No CNAME off Monash infrastructure. TLS certificate is a
+    Monash-procured Sectigo OV certificate, and the AAF Organization block names Monash
+    University. Institution-operated on every axis checked.
+  probed: '2026-08-19'
+  status: 200
+  resolved_ip: 118.138.238.241
+  ip_owner: MONASHUNI-NET3 — Monash University (APNIC)
+  note: >-
+    The entityID dereferences to an HTML login landing page rather than standalone SAML
+    metadata; the authoritative machine-readable description of this SP is its entry in
+    the AAF aggregate, not a per-entity metadata URL.
+- entityID: https://keycloak.monashhpc-ancillary.cloud.edu.au/merc-keycloak
+  display_name: Monash eResearch HPC Passwords
+  organization: Monash University
+  x-operator: tenant
+  operator_basis: >-
+    Monash-specific Keycloak realm hosted on cloud.edu.au, the ARDC/Nectar national
+    research cloud, not on a Monash-owned domain. Monash's realm and Monash's users, on
+    shared national infrastructure.
+- entityID: https://monash.myequals.net/shibboleth
+  display_name: Digitary Admin Portal for Monash
+  organization: Monash University
+  x-operator: tenant
+  operator_basis: >-
+    Monash-specific subdomain on myequals.net, the Digitary/MyEquals digital-credential
+    platform. Monash's credentials, the vendor's contract.
+- entityID: https://monash.wams-edu.com/shibboleth
+  display_name: Monash - Academic Workload Management System (WAMS)
+  organization: ACADEM
+  x-operator: tenant
+  operator_basis: >-
+    Monash-specific subdomain on wams-edu.com. The AAF Organization block names the
+    vendor ("ACADEM"), not Monash, which is itself the tell.
+
+summary:
+  aaf_entities_matching_monash: 5
+  institution_operated: 1
+  tenant: 4
+  vendor: 0
+  identity_providers: 1
+  service_providers: 4
+  note: >-
+    Revised 2026-08-19 after IP-ownership checks. The IdP was initially recorded as
+    institution-operated on hostname evidence alone; resolving it to Amazon address space
+    behind AAF's Rapid IdP CNAME moved it to tenant. hpc.erc.monash.edu.au is the only
+    federation entity that survives as institution-operated.
