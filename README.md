@@ -1,4 +1,4 @@
-# Monash University (monash)
+# Monash University
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,115 +64,136 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Monash University is a public research university in Melbourne, Australia, and a member of the Group of Eight, ranked #42 in the QS World University Rankings 2025. This repository catalogs Monash's public, machine-readable footprint as an [APIs.json](https://apisjson.org) profile.
+Monash University is a public research university in Melbourne, Australia, and a member of the Group of Eight. Its genuinely institution-operated programmable footprint is small but real, and it is not where a company's would be. Its three institution-operated surfaces all belong to Monash eResearch and all resolve into Monash's own APNIC address space: the Cloud Resource Allocation and Management System (CRAMS) portal, a public documentation site for the M3/MASSIVE HPC estate, and a Shibboleth service provider federated through the Australian Access Federation. None of the three publishes an open specification, so Monash's only evidenced domain-standard conformance (SAML, Shibboleth) rests on that one federation entry. The Monash-branded identity provider at idp.monash.edu.au looks like the strongest contract here and is not Monash's: it CNAMEs to idp-cname.aaf.edu.au on Amazon address space, making it a tenant of AAF's fully managed Rapid IdP. Everything else that looks like a Monash API is a vendor platform running under a Monash hostname: the Bridges research repository is Figshare (bridges.monash.edu is a CNAME to figshare.com), research.monash.edu is Elsevier Pure, the Handbook course catalog runs on CourseLoop, and library discovery is Ex Libris Primo. Those are recorded here as tenant relationships, not as Monash contracts. No central institutional developer portal, no open data portal, and no institution-operated OAI-PMH endpoint were found.
 
-Re-profiled **2026-08-19** under the university pipeline, which settles **who operates each surface** before saving anything. A university is a federation of buyers, not a producer, and Monash is a clean example: of eight surfaces catalogued here, **three are institution-operated and five are tenant relationships on platforms Monash does not run**.
+**Areas:** Education · Higher Education · University · Research · Australia · Group of Eight · Identity Federation · Research Computing · Research Repository · Course Catalog
 
-- APIs.json: https://raw.githubusercontent.com/api-evangelist/monash/refs/heads/main/apis.yml
-- Run with Naftiko: https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=monash-api-evangelist&utm_content=repo
+## Monash University on APIs.io
 
-## Type
+Everything profiled for Monash University is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/monash/](https://apis.io/providers/monash/)** — or go straight to one of the APIs or properties below.
 
-- Index
-- Consumer
-- 3rd-Party
-- University — Public Research University
+### APIs (8)
 
-## Tags
+- [Monash University Identity Provider (AAF Rapid IdP tenant)](https://apis.io/apis/monash/idp/) — Monash's federated login, published as a signed SAML 2.0 EntityDescriptor at https://idp.monash.edu.au/idp/shibboleth (HTTP 200, application/xml). Declares…
+- [Monash eResearch Center HPC ID (SAML Service Provider)](https://apis.io/apis/monash/eresearch-hpc-sp/) — A second Monash-operated SAML service provider, entityID https://hpc.erc.monash.edu.au/shibboleth, registered in the Australian Access Federation under…
+- [CRAMS API (Cloud Resource Allocation and Management System)](https://apis.io/apis/monash/crams/) — Monash eResearch operates the Cloud Resource Allocation and Management System (CRAMS), an institutional portal for managing research cloud resource…
+- [Monash eResearch Documentation (M3 / MASSIVE)](https://apis.io/apis/monash/eresearch-docs/) — Public documentation for the compute, storage, application and training services Monash eResearch runs, including the M3 and MonARCH HPC clusters.…
+- [Bridges — Monash Research Repository (Figshare tenant)](https://apis.io/apis/monash/bridges/) — Monash's institutional research data repository, "Bridges", operating on the Figshare platform. bridges.monash.edu and monash.figshare.com both resolve as…
+- [Monash Research Portal (Elsevier Pure tenant)](https://apis.io/apis/monash/pure/) — Monash's research outputs, profiles and publication metadata portal, running on Elsevier Pure. research.monash.edu resolves as a CNAME chain to…
+- [Monash University Handbook (CourseLoop tenant)](https://apis.io/apis/monash/handbook/) — The official Monash course, unit and area-of-study catalog. The site is a Next.js application on Monash's own hostname, but its runtime configuration…
+- [Monash Library Discovery (Ex Libris Primo tenant)](https://apis.io/apis/monash/library-discovery/) — Monash Library's discovery layer. search.lib.monash.edu redirects to monash.primo.exlibrisgroup.com/discovery/search?vid=61MONASH_AU:MONUI — a…
 
-Education, Higher Education, University, Research, Australia, Group of Eight, Identity Federation, Research Computing, Research Repository, Course Catalog
+### Published properties
 
-## Operator attribution
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Operator was settled by **IP ownership**, not hostname. A Monash hostname is not evidence that Monash runs the thing behind it.
+#### Agentic access (1)
 
-| Surface | Host | Operator | Basis |
-|---|---|---|---|
-| CRAMS | crams-api.erc.monash.edu | **institution** | 118.138.238.174 — MONASHUNI-NET3 (APNIC) |
-| eResearch docs (M3/MASSIVE) | docs.erc.monash.edu | **institution** | 130.194.250.205 — MONASHUNI-AU (APNIC) |
-| eResearch HPC ID (SAML SP) | hpc.erc.monash.edu.au | **institution** | 118.138.238.241 — MONASHUNI-NET3 (APNIC) |
-| Identity Provider | idp.monash.edu.au | tenant | CNAMEs to `idp-cname.aaf.edu.au`, resolves to Amazon (AT-88-Z) — AAF **Rapid IdP** managed service |
-| Bridges research repository | bridges.monash.edu | tenant | CNAME to `figshare.com` |
-| Research portal | research.monash.edu | tenant | CNAME to `monash.elsevierpure.com` |
-| Handbook (course catalog) | handbook.monash.edu | tenant | `API_DOMAIN` = `api-ap-southeast-2.prod.courseloop.com` |
-| Library discovery | search.lib.monash.edu | tenant | 302 to `monash.primo.exlibrisgroup.com` |
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## APIs
+- [Monash Agentic Access](https://apis.io/agentic-access/monash/monash-agentic-access/)
 
-**Institution-operated** — real surfaces, none of which publishes an open specification:
+#### Vocabulary (1)
 
-- **CRAMS (Cloud Resource Allocation and Management System)** — Monash eResearch's research cloud allocation portal. HTTP 200 with a real Django application shell; `/api/`, `/swagger/` and `/docs/` all 404.
-  - Portal: https://crams-api.erc.monash.edu/
-- **Monash eResearch Documentation (M3 / MASSIVE)** — compute, storage, applications and training docs for the M3 and MonARCH HPC clusters. `massive.org.au` redirects here.
-  - Docs: https://docs.erc.monash.edu/
-- **Monash eResearch Center HPC ID** — a Shibboleth SAML service provider registered in the Australian Access Federation under Organization "Monash University". Monash's only evidenced education-regime domain-standard conformance (SAML, Shibboleth) rests on this one entry.
-  - AAF aggregate: https://md.aaf.edu.au/aaf-metadata.xml
+The provider's domain terms, defined.
 
-**Tenant relationships** — real institutional facts; the contracts belong to the platform, not to Monash, and are deliberately not saved here:
+- [Monash University Research Repository (figshare) Vocabulary](https://apis.io/vocabularies/monash/monash-vocabulary/)
 
-- **Monash Identity Provider** — signed SAML 2.0 metadata, the most complete machine-readable contract in this profile, served from AAF's fully managed Rapid IdP. https://idp.monash.edu.au/idp/shibboleth
-- **Bridges** — Monash's research data repository on Figshare. https://bridges.monash.edu/
-- **Monash Research Portal** — Elsevier Pure. https://research.monash.edu/
-- **Monash Handbook** — course/unit catalog on CourseLoop. https://handbook.monash.edu/
-- **Library Discovery** — Ex Libris Primo, view code `61MONASH_AU:MONUI`. https://search.lib.monash.edu/
+#### Collections (10)
 
-## Identity Federation
+Postman and Open Collection request collections.
 
-- [identity-federation/monash-identity-federation.yml](identity-federation/monash-identity-federation.yml) — all five AAF entities naming Monash, each with an operator verdict
-- [identity-federation/monash-idp-saml-metadata.xml](identity-federation/monash-idp-saml-metadata.xml) — the fetched SAML 2.0 EntityDescriptor
+- [Figshare altmetric API](https://apis.io/collections/monash/open-monash-altmetric-api/)
+- [Figshare altmetric articles API](https://apis.io/collections/monash/open-monash-articles-api/)
+- [Figshare altmetric authors API](https://apis.io/collections/monash/open-monash-authors-api/)
+- [Figshare altmetric collections API](https://apis.io/collections/monash/open-monash-collections-api/)
+- [Figshare altmetric institutions API](https://apis.io/collections/monash/open-monash-institutions-api/)
+- [Figshare altmetric oauth API](https://apis.io/collections/monash/open-monash-oauth-api/)
+- [Figshare altmetric other API](https://apis.io/collections/monash/open-monash-other-api/)
+- [Figshare altmetric profiles API](https://apis.io/collections/monash/open-monash-profiles-api/)
+- [Figshare altmetric projects API](https://apis.io/collections/monash/open-monash-projects-api/)
+- [Figshare altmetric symplectic API](https://apis.io/collections/monash/open-monash-symplectic-api/)
 
-## Conformance
+#### Security (2)
 
-- [conformance/monash-conformance.yml](conformance/monash-conformance.yml) — `education` regime standards. 2 conformant (saml, shibboleth, institution-operated), 2 tenant-operated only, 3 vendor-operated, 7 not found.
+Authentication, trust centre, and vulnerability disclosure.
 
-## Security
+- [Monash Domain Security](https://apis.io/security/monash/monash-domain-security/)
+- [Monash Trust Center](https://apis.io/security/monash/monash-trust-center/)
 
-- [security/monash-domain-security.yml](security/monash-domain-security.yml)
-- [security/monash-trust-center.yml](security/monash-trust-center.yml)
+#### Plans and pricing (1)
 
-## Plans
+Published plans, tiers and prices.
 
-- [plans/monash-plans-pricing.yml](plans/monash-plans-pricing.yml)
+- [Monash Plans Pricing](https://apis.io/plans/monash/monash-plans-pricing/)
 
-## Rate Limits
+#### Rate limits (1)
 
-- [rate-limits/monash-rate-limits.yml](rate-limits/monash-rate-limits.yml)
+Published request limits.
 
-## FinOps
+- [Monash Rate Limits](https://apis.io/rate-limits/monash/monash-rate-limits/)
 
-- [finops/monash-finops.yml](finops/monash-finops.yml)
+#### FinOps (1)
 
-## Timestamps
+What the API costs to run, by operation.
 
-- Created: 2026-06-03
-- Modified: 2026-08-19
+- [Monash Finops](https://apis.io/finops/monash/monash-finops/)
 
-## Common Properties
+## Where to find this API
 
-- Website: https://www.monash.edu/
-- Identity Federation: [identity-federation/monash-identity-federation.yml](identity-federation/monash-identity-federation.yml)
-- Research Computing: https://docs.erc.monash.edu/
-- Research Repository: https://bridges.monash.edu/
-- Library Catalog: https://search.lib.monash.edu/
-- Course Catalog: https://handbook.monash.edu/
-- AI Policy: https://www.monash.edu/ai/tools-training-and-resources/ai-policies-and-guidelines
-- Research: https://research.monash.edu/
-- GitHub: https://github.com/monash-university
-- Source Code: https://github.com/MonashStudentInnovation
-- LinkedIn: https://www.linkedin.com/school/monash-university/
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-## Notes
+- [Website](https://www.monash.edu/)
 
-All cataloged URLs were probed on 2026-08-19 and no endpoints were fabricated.
+## API Evangelist rating
 
-**What changed in this re-profile.** The June 2026 pass attributed a Figshare contract to Monash, saved as ten tag-split OpenAPIs plus derived schemas, examples, rules, vocabulary, scopes and an agentic-access profile. That same Figshare contract was attributed to 24 other universities, and the eight top-scoring universities in the catalog were all scoring the identical document. Those artifacts have been removed. Monash's Figshare relationship is retained as a **tenant** surface, because it is a real institutional fact — but the contract scores against Figshare, where it belongs.
+**Kin Score 13.7** — emerging · rubric 0.24.0 · scored 2026-10-17
 
-**The IdP is the interesting case.** `idp.monash.edu.au` publishes exactly what a strong institutional surface should look like: signed SAML 2.0 metadata, application/xml, own hostname, own certificate name, `shibmd:Scope monash.edu.au`, registered in a national federation. It was recorded as institution-operated on that evidence, and then reversed within the same run when DNS showed it CNAMEd to `idp-cname.aaf.edu.au` and whois put the IPs in Amazon's AT-88-Z. AAF's Rapid IdP is a fully managed identity provider that AAF says more than half its member organisations now use. `idp.unimelb.edu.au` shows the same shape; `idp.uq.edu.au` resolves into UQ's own address space, so the pattern discriminates.
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 4.4 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 9.5 |
+| Access clarity | 13.2 |
 
-**Blocked surfaces.** `www.monash.edu` returns HTTP 403 with `cf-mitigated: challenge` to non-browser clients — a Cloudflare managed challenge. It is live for browsers; the block is a limitation of our probe, not a finding about Monash. `bridges.monash.edu` returns HTTP 202 with `x-amzn-waf-action: challenge`.
+**Agent readiness 2.4** — human-only
 
-**Absences that are real.** `data.monash.edu`, `api.monash.edu` and `developer.monash.edu` do not resolve. No open data portal, no institution-operated OAI-PMH endpoint, and no central developer portal were found. The `monash-university` GitHub org exists but has zero public repositories; `MonashStudentInnovation` has six. `TheBetterHandbookAPI` is community-built and not an official Monash service.
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-## Maintainers
+**Regulatory alignment 15.7** — Education & Research
 
-- Kin Lane — kin@apievangelist.com
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/monash/](https://apis.io/providers/monash/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Monash University: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/monash/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
